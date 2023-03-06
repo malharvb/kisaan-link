@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
+#page-wrap {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
 
 body {
   margin: 0;
@@ -557,4 +565,21 @@ h1 {
 .comboImages img {
   height: 200px;
   width: 200px
+}
+
+@media only screen and (max-width: 850px) {
+  nav {
+    display: none;
+  }
+  .navbar {
+    font-size: 1rem;
+  }
+
+  .home-img {
+    display: none;
+  }
+
+  .home-container {
+    flex-basis: 100%;
+  }
 }

@@ -20,7 +20,7 @@ import FarmerSubscription from './pages/FarmerSubscription';
 import BuyerSubscription from './pages/BuyerSubscription';
 import ComboItemPage from './pages/ComboItemPage';
 import TruckForm from './pages/TruckForm';
-// Hello
+
 function App() {
   const { user } = useUserContext()
   const {cart} = useCartContext()

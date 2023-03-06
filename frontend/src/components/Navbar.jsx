@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import useUserContext from '../hooks/useUserContext';
-
+import Sidebar from './Sidebar';
 function Navbar() {
   const { user, dispatch} = useUserContext()
 
@@ -60,8 +60,9 @@ function Navbar() {
           <button type="submit" className="logout-btn" onClick={handleClick}>Logout</button>
         </>
         )}
-
       </nav>
+      <Sidebar />
+
     </div>
   );
 }
