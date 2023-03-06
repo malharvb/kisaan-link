@@ -5,7 +5,7 @@ function Cart() {
     const { cart } = useCartContext()
     const { user } = useUserContext()
     let total = 0;
-
+    console.log(cart)
     cart.forEach((item) => {
         total += parseInt(item.quantity) * parseInt(item.cost)
     })
@@ -77,7 +77,8 @@ function Cart() {
                 <td>₹{total+Math.round(total/10)}</td>
             </tr>
             <tr>
-                <button className="form-btn" onClick={handleClick}>Place Order</button>
+                <td></td>
+                <td><button className="form-btn" onClick={handleClick}>Place Order</button></td>
             </tr>
            </table>
         </div>

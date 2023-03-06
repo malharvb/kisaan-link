@@ -3,9 +3,7 @@ import Combo from "../components/Combo";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import HomeImg from '../assets/home-img.jpeg'
-
-function Home() {
+function Home() {   
   const [combos, setCombos] = useState([])
 
   useEffect(() => {

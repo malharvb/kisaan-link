@@ -3,7 +3,7 @@ import useUserContext from "../hooks/useUserContext";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-    const { user, dispatch } = useUserContext()
+    const { dispatch } = useUserContext()
     const [userType, setUserType] = useState('buyers');
     const [isLoading, setLoading] = useState(false)
     const navigate = useNavigate();

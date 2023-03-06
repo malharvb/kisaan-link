@@ -23,21 +23,21 @@ const truckSchema = new schema(
             unique: true
         },
         truckCurrentLocation: {
-            Latitude: {
+            lat: {
                 type: String,
                 required: true
             },
-            Longitude: {
+            long: {
                 type: String,
                 required: true
             }
         },
         truckDestinationLocation: {
-            Latitude: {
+            lat: {
                 type: String,
                 required: true
             },
-            Longitude: {
+            long: {
                 type: String,
                 required: true
             }

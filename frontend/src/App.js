@@ -19,6 +19,7 @@ import useCartContext from './hooks/useCartContext';
 import FarmerSubscription from './pages/FarmerSubscription';
 import BuyerSubscription from './pages/BuyerSubscription';
 import ComboItemPage from './pages/ComboItemPage';
+import TruckForm from './pages/TruckForm';
 // Hello
 function App() {
   const { user } = useUserContext()
@@ -40,6 +41,8 @@ function App() {
         <Route path='/farmersub' element={<FarmerSubscription />}></Route>
         <Route path='/buyersub' element={<BuyerSubscription />}></Route>
         <Route path='/combos/:id' element={<ComboItemPage />}></Route>
+        <Route path='/truckForm' element={<TruckForm />}></Route>
+
 
         {/* <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
         <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />

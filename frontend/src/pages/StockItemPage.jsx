@@ -3,6 +3,7 @@ import imageList from '../assets/individualItemImageList'
 import {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import useCartContext from '../hooks/useCartContext'
+import useUserContext from '../hooks/useUserContext'
 
 function StockItemPage() {
     const [product, setProduct] = useState()
@@ -11,6 +12,7 @@ function StockItemPage() {
     const {id} = useParams()
 
     const {cart, dispatch} = useCartContext()
+    const {user} = useUserContext();
 
     function handleClick(e) {
         e.preventDefault();
@@ -80,7 +82,7 @@ function StockItemPage() {
                             </select>
                         </p>
                         <div className='shop-btn-group'>
-                            <button type="button" onClick={handleClick}>
+                            <button type="button" onClick={handleClick} disabled={!user}>
                                 <i className="fa fa-shopping-cart"></i>
                                 Add to cart
                             </button>

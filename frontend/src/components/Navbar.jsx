@@ -10,6 +10,7 @@ function Navbar() {
     e.preventDefault()
     dispatch({type: 'LOGOUT'})
     localStorage.removeItem('user')
+    localStorage.removeItem('cart')
   }
 
   return (
@@ -24,10 +25,16 @@ function Navbar() {
           <Link to="/register">Register</Link>
         </>
         )}
-        {(user && (user.type === "Farmer" || user.type === "TruckDriver")) && 
+        {(user && (user.type === "Farmer")) && 
         (<>
         <Link to="/truck">Truck Management</Link>
         <Link to='/farmersub'>Pricing</Link>
+        </>)
+        }
+
+        {(user && (user.type === "TruckDriver")) && 
+        (<>
+        <Link to="/truckForm">Truck Enrollment</Link>
         </>)
         }
 
