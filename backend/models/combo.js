@@ -8,6 +8,10 @@ const comboSchema = new Schema(
             type: String,
             required: true
         },
+        comboQty:{
+            type: String,
+            required: true,
+        },
         comboPrice:{
             type: String,
             required: true,
