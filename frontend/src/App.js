@@ -42,11 +42,6 @@ function App() {
         <Route path='/buyersub' element={<BuyerSubscription />}></Route>
         <Route path='/combos/:id' element={<ComboItemPage />}></Route>
         <Route path='/truckForm' element={<TruckForm />}></Route>
-
-
-        {/* <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
-        <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-        <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} /> */}
       </Routes>
     </BrowserRouter>
   );

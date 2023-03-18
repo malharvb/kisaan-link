@@ -8,12 +8,12 @@ function Home() {
 
   useEffect(() => {
     async function fetchCombos() {
-      const response = await fetch('/buyers/comboTest', {
+      const response = await fetch('/buyers/comboProducts', {
         method: 'GET'
       })
 
       const json = await response.json()
-      console.log(json)
+
       setCombos(json)
     }
 
