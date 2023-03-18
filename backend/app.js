@@ -26,7 +26,6 @@ app.use('/buyers', buyersRoutes);
 app.use('/truckDrivers', truckDriverRoutes);
 
 // DB connection
-
 let port = 4000;
 mongoose.connect(process.env.MONGO_URI).then((result) => {
     app.listen(port);
