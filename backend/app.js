@@ -24,8 +24,7 @@ app.use('/buyers', buyersRoutes);
 app.use('/truckDrivers', truckDriverRoutes);
 
 // DB connection
-username = 'syrusUser';
-password = 'syrusUser';
+username = password = 'kisaanLinkUser';
 let port = 4000;
 mongoose.connect(`mongodb+srv://${username}:${password}@clusterone.awyx4aq.mongodb.net/kisaanLive?retryWrites=true&w=majority`).then((result) => {
     app.listen(port);

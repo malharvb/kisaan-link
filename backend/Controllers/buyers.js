@@ -238,6 +238,13 @@ while(combos != null){
 }
 console.log(finalCombos);
 
+for(indCombo of finalCombos){
+const combo = new Combo({ comboName: indCombo.comboItems, comboQty: indCombo.comboQty, comboPrice: indCombo.comboPrice, comboPerishability: indCombo.comboLife});
+            combo
+                .save()
+                .catch((err)=>{res.status(500).json("Combos not available, DB error detected!")});
+}
+
 res.status(202).json(finalCombos);
 
 console.log();
