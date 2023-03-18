@@ -15,7 +15,7 @@ const Sidebar = props => {
       localStorage.removeItem('cart')
     }
   return (
-    <Menu right>
+    <Menu right className="resp-nav">
       {/* <a className="menu-item" href="/">
         Home
       </a>

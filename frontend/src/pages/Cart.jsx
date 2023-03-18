@@ -1,4 +1,5 @@
-import useCartContext from "../hooks/useCartContext"
+import useCartContext from "../hooks/useCartContext";
+import comboList from "../assets/comboList";
 import imageList from "../assets/individualItemImageList";
 import useUserContext from "../hooks/useUserContext";
 import StripeCheckout from "react-stripe-checkout";
@@ -47,8 +48,9 @@ function Cart() {
                         imageList.forEach((imageL) => {
                             if (imageL[1] === item.name.toLowerCase()) {
                                 item.image = imageL[0]
-                            }
+                            } 
                         })
+                        if (!item.image) item.image = comboList[2];
                         return (
                             <tr>
                                 <td>

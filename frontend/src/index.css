@@ -51,10 +51,10 @@ nav {
 }
 
 .home-img {
-  flex-basis: 40%;
+  flex-basis: 50%;
   background-image: url('./assets/home-img.jpg');
   overflow: hidden;
-  background-size: contain;
+  background-size: 50% 100%;
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
@@ -65,7 +65,7 @@ nav {
   align-items: center;
   padding: 3em;
   gap: 2em;
-  flex-basis: 60%;
+  flex-basis: 50%;
 }
 
 .combo-container, .category-container {
@@ -567,6 +567,10 @@ h1 {
   width: 200px
 }
 
+#root > div.navbar > div {
+  display: none;
+}
+
 @media only screen and (max-width: 850px) {
   nav {
     display: none;
@@ -581,5 +585,9 @@ h1 {
 
   .home-container {
     flex-basis: 100%;
+  }
+
+  #root > div.navbar > div {
+    display: block;
   }
 }

@@ -3,22 +3,24 @@ import imageList from '../assets/individualItemImageList'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import useCartContext from '../hooks/useCartContext'
+import useUserContext from '../hooks/useUserContext'
 
 function ComboItemPage() {
     const [product, setProduct] = useState()
     const [quantity, setQuantity] = useState(1)
     const [addedToCart, addToCart] = useState(false)
     const { id } = useParams()
+    const { user } = useUserContext()
 
     const { cart, dispatch } = useCartContext()
 
     function handleClick(e) {
         e.preventDefault();
         if (!cart) {
-            dispatch({type: 'SET_CART', payload: {name: product.produceType, quantity: quantity, cost: product.produceDesiredPrice}})
+            dispatch({type: 'SET_CART', payload: {name: product.comboName, quantity: quantity, cost: product.comboPrice}})
         }
         else {
-            dispatch({type: 'CREATE_CART', payload: {name: product.produceType, quantity: quantity, cost: product.produceDesiredPrice}})
+            dispatch({type: 'CREATE_CART', payload: {name: product.comboName, quantity: quantity, cost: product.comboPrice}})
         }
 
         // console.log(cart)
@@ -86,7 +88,7 @@ function ComboItemPage() {
                             </select>
                         </p>
                         <div className='shop-btn-group'>
-                            <button type="button" onClick={handleClick}>
+                            <button type="button" onClick={handleClick} disabled={!user}>
                                 <i className="fa fa-shopping-cart"></i>
                                 Add to cart
                             </button>
