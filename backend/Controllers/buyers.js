@@ -103,6 +103,7 @@ exports.order = (req, res, next) => {
     const order = new Order({ buyerContact: buyerContact, orderTotalPrice: orderTotalPrice, orderItems: orderItems });
     order
         .save()
+        .then(()=>{})
         .then(() => {
             res.status(202).json({ mess: "Order placed successfully" });
         })
@@ -135,7 +136,12 @@ Combo.countDocuments()
     let products = [];
     Stock.find().limit(4)
         .then((stock) => {
-            // console.log(stock);
+
+            for(eachStock of stock){
+              Stock.deleteOne({_id: `${eachStock._id}`})
+              .catch((err)=>{console.log(err)});
+            }
+
             for (stockObjs of stock) {
                 let product = {
                     produceType: stockObjs.produceType,
@@ -190,12 +196,7 @@ while (!stock_zero) {
 
 combos.sort((a, b) => a[2] - b[2]);
 
-// combos.forEach(combo => {
-//   // console.log(`${combo[0].join(', ')} for Rs.${combo[1]} (Shelf Life: ${combo[2]})`);
-// });
-
 class comboClass {
-    
   constructor(comboItems, comboPrice, comboLife, comboQty){
     this.comboItems=comboItems;
     this.comboPrice=comboPrice;
@@ -208,35 +209,26 @@ let finalCombos = [];
 
 while(combos != null){
   comboToSearch=combos[0];
-//   console.log(comboToSearch)
   arrCounter=1;
   comboQtyCounter=1;
-  // console.log(comboToSearch[0], combos[arrCounter][0])
+
   while(arrCounter<combos.length){
     if(comboToSearch.toString() == combos[arrCounter].toString()){
-       // console.log(comboToSearch[0], combos[arrCounter][0])
       combos.splice(arrCounter, 1);
       arrCounter--;
-      // console.log(combos)
       comboQtyCounter++;
-      // console.log(comboQtyCounter);
     }
     arrCounter++;
-    // console.log(arrCounter);
   }
-
   
   let comboObj = new comboClass(combos[0][0].toString(), comboToSearch[1].toString(), comboToSearch[2].toString(), comboQtyCounter.toString());
         
   finalCombos.push(comboObj);
-  // console.log(finalCombos);
   combos.shift();
-  // console.log(combos)
   if(combos.length === 0 ){
       break
   }
 }
-console.log(finalCombos);
 
 for(indCombo of finalCombos){
 const combo = new Combo({ comboName: indCombo.comboItems, comboQty: indCombo.comboQty, comboPrice: indCombo.comboPrice, comboPerishability: indCombo.comboLife});
@@ -247,12 +239,15 @@ const combo = new Combo({ comboName: indCombo.comboItems, comboQty: indCombo.com
 
 res.status(202).json(finalCombos);
 
-console.log();
-console.log("updated produceQuantity: ");
+// updated produce Quantity in stock after making combos from it
 products.forEach(product => {
-  console.log(`${product.produceType}: ${product.produceQuantity}`);
+  if(product.produceQuantity!=0){
+    const stockdb = new Stock({ produceType: product.produceType, produceCategory: product.produceCategory, produceQuantity: product.produceQuantity, producePerishability: product.producePerishability, produceDesiredPrice: product.produceDesiredPrice });
+    stockdb
+        .save()
+        .catch((err) => { console.log(err) })
+  }
 });
-            // console.log(products);
         })
     }
     else{
