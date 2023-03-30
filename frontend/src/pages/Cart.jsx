@@ -32,7 +32,7 @@ function Cart() {
         console.log(json.mess)
 
         if (res.ok) {
-            dispatch({action: 'SET_CART', payload: null})
+            dispatch({type: 'SET_FROM_LOCAL', payload: null})
             localStorage.removeItem('cart')
         }
     }
