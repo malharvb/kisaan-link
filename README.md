@@ -9,3 +9,5 @@ destination of the truck. Also, more transparency is achieved by allowing the fa
 to track the orders live in trucks with their number plates and live location. The buyers with more
 frequent orders are incentivized and also farmers which sell their produce on a daily basis are given
 cost cuts in transport commission.
+
+[Live Demo :point_left:](https://kisaan-link.onrender.com/)

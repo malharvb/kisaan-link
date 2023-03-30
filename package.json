@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "dotenv": "^16.0.3",
-    "express-async-handler": "^1.2.0",
-    "stripe": "^11.13.0"
-  }
-}
