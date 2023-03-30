@@ -2,15 +2,17 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import useUserContext from '../hooks/useUserContext';
 import Sidebar from './Sidebar';
+import useCartContext from '../hooks/useCartContext';
 function Navbar() {
   const { user, dispatch} = useUserContext()
-
+  const { cart, dispatch: cartDispatch } = useCartContext()
 
   function handleClick(e) {
     e.preventDefault()
     dispatch({type: 'LOGOUT'})
+    cartDispatch({type: 'SET_FROM_LOCAL', payload: null})
     localStorage.removeItem('user')
-    localStorage.removeItem('cart')
+    console.log(cart)
   }
 
   return (

@@ -17,10 +17,10 @@ function ComboItemPage() {
     function handleClick(e) {
         e.preventDefault();
         if (!cart) {
-            dispatch({type: 'SET_CART', payload: {name: product.comboName, quantity: quantity, cost: product.comboPrice}})
+            dispatch({type: 'SET_CART', payload: {id, name: product.comboName, quantity: quantity, cost: product.comboPrice}})
         }
         else {
-            dispatch({type: 'CREATE_CART', payload: {name: product.comboName, quantity: quantity, cost: product.comboPrice}})
+            dispatch({type: 'CREATE_CART', payload: {id, name: product.comboName, quantity: quantity, cost: product.comboPrice}})
         }
 
         // console.log(cart)

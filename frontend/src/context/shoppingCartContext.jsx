@@ -20,7 +20,7 @@ export const cartReducer = (state, action) => {
       };
     case 'DELETE_CART':
       return {
-        cart: state.cart.filter((todo) => todo._id !== action.payload._id),
+        cart: state.cart.filter((item) => item._id !== action.payload._id),
       };
     case 'SET_FROM_LOCAL':
       return {

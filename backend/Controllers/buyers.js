@@ -32,7 +32,7 @@ exports.login = (req, res, next) => {
                                 buyerName: buyerCont.buyerName
                             }
                         }, "kisaanLink",
-                            { expiresIn: "1440m" }
+                            { expiresIn: "2d" }
                         );
                         res.status(200).json({ type: "Buyer", accessToken });
                     }

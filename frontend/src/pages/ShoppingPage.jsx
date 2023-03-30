@@ -15,10 +15,10 @@ function ShoppingPage() {
     function handleClick(e, product) {
         e.preventDefault();
         if (!cart) {
-            dispatch({type: 'SET_CART', payload: {name: product.produceType, quantity: 1, cost: product.produceDesiredPrice}})
+            dispatch({type: 'SET_CART', payload: {id: product._id, name: product.produceType, quantity: 1, cost: product.produceDesiredPrice}})
         }
         else {
-            dispatch({type: 'CREATE_CART', payload: {name: product.produceType, quantity: 1, cost: product.produceDesiredPrice}})
+            dispatch({type: 'CREATE_CART', payload: {id: product._id, name: product.produceType, quantity: 1, cost: product.produceDesiredPrice}})
         }
         addToCart(true)
     }
@@ -37,7 +37,7 @@ function ShoppingPage() {
                         product.image = imageL[0]
                     }
             })})
-
+ 
             setProducts(json)
         }
 

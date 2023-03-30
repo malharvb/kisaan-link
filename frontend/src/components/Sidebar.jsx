@@ -12,7 +12,6 @@ const Sidebar = props => {
       e.preventDefault()
       dispatch({type: 'LOGOUT'})
       localStorage.removeItem('user')
-      localStorage.removeItem('cart')
     }
   return (
     <Menu right className="resp-nav">

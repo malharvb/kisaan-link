@@ -37,7 +37,8 @@ function App() {
         <Route path='/truck/pool' element={<PoolForm />}></Route>
         <Route path='/trackOrder' element={<TrackOrder />}></Route>
         <Route path='/items/:id' element={<StockItemPage />} />
-        <Route path='/cart' element={cart ? <Cart /> : <Navigate to="/"/>} />
+        <Route path='/cart' element={user && cart ? <Cart /> : <Navigate to="/"/>} />
+        {console.log(cart)}
         <Route path='/farmersub' element={<FarmerSubscription />}></Route>
         <Route path='/buyersub' element={<BuyerSubscription />}></Route>
         <Route path='/combos/:id' element={<ComboItemPage />}></Route>

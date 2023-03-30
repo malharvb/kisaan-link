@@ -17,10 +17,10 @@ function StockItemPage() {
     function handleClick(e) {
         e.preventDefault();
         if (!cart) {
-            dispatch({type: 'SET_CART', payload: {name: product.produceType, quantity: quantity, cost: product.produceDesiredPrice}})
+            dispatch({type: 'SET_CART', payload: {id, name: product.produceType, quantity: quantity, cost: product.produceDesiredPrice}})
         }
         else {
-            dispatch({type: 'CREATE_CART', payload: {name: product.produceType, quantity: quantity, cost: product.produceDesiredPrice}})
+            dispatch({type: 'CREATE_CART', payload: {id, name: product.produceType, quantity: quantity, cost: product.produceDesiredPrice}})
         }
 
         // console.log(cart)

@@ -5,12 +5,11 @@ import useUserContext from "../hooks/useUserContext";
 import StripeCheckout from "react-stripe-checkout";
 
 function Cart() {
-    const { cart } = useCartContext()
+    const { cart, dispatch } = useCartContext()
     const { user } = useUserContext()
     let publishableKey = 'pk_test_51MiaJ7SJJiuoYq54vLzcQiWRn4mGWOunUZfvQhiQagVgkyfdPR0zyjXdYpHowhHLmc1OaDJI1cIqr488WcaM1g2M00QgmClwCw'
     let total = 0;
     
-    console.log(cart)
     cart.forEach((item) => {
         total += parseInt(item.quantity) * parseInt(item.cost)
     })
@@ -31,6 +30,11 @@ function Cart() {
         const json = await res.json()
 
         console.log(json.mess)
+
+        if (res.ok) {
+            dispatch({action: 'SET_CART', payload: null})
+            localStorage.removeItem('cart')
+        }
     }
 
     return (
@@ -92,12 +96,10 @@ function Cart() {
                                 label='Pay Now'
                                 billingAddress
                                 shippingAddress 
-                                // onClick={(e)=>{handleClick(e);}}
                                 stripeKey= {publishableKey}
                                 name= 'Pay with Credit or Debit Card'
                                 currency="INR"
                                 amount={stripeAmt}
-                                // description= {"Your total Order value is Rs. "+ taxedTotal}
                                 token={payNow}
                                 />
                             </td>

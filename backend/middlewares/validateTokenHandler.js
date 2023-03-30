@@ -23,6 +23,7 @@ const validateToken = asyncHandler(async (req, res, next)=>{
                 req.TruckDriver = decoded.TruckDriver;
             }
 
+            req.body.buyerContact = decoded.buyerContact
             
             next();
             
