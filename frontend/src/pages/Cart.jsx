@@ -95,7 +95,7 @@ function Cart() {
                                 label='Pay Now'
                                 billingAddress
                                 shippingAddress 
-                                stripeKey= {process.env.publishableKey}
+                                stripeKey= {process.env.REACT_APP_PUBLISHABLE_KEY}
                                 name= 'Pay with Credit or Debit Card'
                                 currency="INR"
                                 amount={stripeAmt}

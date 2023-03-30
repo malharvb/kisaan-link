@@ -32,7 +32,7 @@ const TruckMap = () => {
     if (!mapRef.current) return;
     const H = window.H;
     const platform = new H.service.Platform({
-        apikey: "0PL2REO-9qDw56ZuDeOx4g22ymUIXoaDrXds0GVbO4M",
+        apikey: process.env.REACT_APP_MAP_KEY,
 
         // apikey: "closed"
     });

@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require("express");
 const app = express();
+const path = require('path')
 
 const mongoose = require('mongoose');
 
@@ -11,7 +12,7 @@ const truckDriverRoutes = require("./Routes/truckDrivers");
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json())
-
+app.use(express.static(path.resolve(__dirname, 'build')))
 // Removal of CORS error
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -24,6 +25,8 @@ app.use((req, res, next) => {
 app.use('/farmers', farmersRoutes);
 app.use('/buyers', buyersRoutes);
 app.use('/truckDrivers', truckDriverRoutes);
+
+app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'build', 'index.html')))
 
 // DB connection
 let port = 4000;
