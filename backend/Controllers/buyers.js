@@ -4,8 +4,7 @@ const Stock = require('../models/stock');
 const Combo = require('../models/combo');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const secretKey = 'sk_test_51MiaJ7SJJiuoYq54NMKiZXy8dvqHXgxSfgc9FUA59HZbCmEVt7oNajhu2xWp6fqg49ui3TEknYt2cNlC5MpJM9oy00ks5zG07g';
-const Stripe = require('stripe')(secretKey);
+const Stripe = require('stripe')(process.env.secretKey);
 
 //  Auth
 exports.login = (req, res, next) => {

@@ -4,14 +4,15 @@ const Schema = mongoose.Schema;
 
 const cartSchema = new Schema(
     {
-        buyerId: {
+        buyerContact:{
             type: String,
-            required: true
+            required: true,
+            unique: true
         },
         cartProducts:{
-            type:[{name: String, quantity: String, cost: String, image: String}],
+            type:[{}],
             required: true}
-    }, {timestamps: true }
+    }, {timestamps: true}
 );
 
-module.exports = mongoose.model("Buyer", buyerSchema);
+module.exports = mongoose.model("Cart", cartSchema);

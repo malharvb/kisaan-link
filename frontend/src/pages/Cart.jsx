@@ -7,7 +7,6 @@ import StripeCheckout from "react-stripe-checkout";
 function Cart() {
     const { cart, dispatch } = useCartContext()
     const { user } = useUserContext()
-    let publishableKey = 'pk_test_51MiaJ7SJJiuoYq54vLzcQiWRn4mGWOunUZfvQhiQagVgkyfdPR0zyjXdYpHowhHLmc1OaDJI1cIqr488WcaM1g2M00QgmClwCw'
     let total = 0;
     
     cart.forEach((item) => {
@@ -96,7 +95,7 @@ function Cart() {
                                 label='Pay Now'
                                 billingAddress
                                 shippingAddress 
-                                stripeKey= {publishableKey}
+                                stripeKey= {process.env.publishableKey}
                                 name= 'Pay with Credit or Debit Card'
                                 currency="INR"
                                 amount={stripeAmt}
