@@ -89,6 +89,8 @@ exports.order = (req, res, next) => {
     let token = req.body.token;
     let stripeAmt = req.body.stripeAmt;
 
+    let isStock;
+
     // console.log(token);
 
     // CODE FOR PAYMENT ACTIVITY CREATION ON DASHBOARD (NOT WORKING) ..
@@ -98,6 +100,51 @@ exports.order = (req, res, next) => {
     //     amount: stripeAmt,
     //     currency: 'INR'
     //     }) 
+
+    let determineStockOrComboAndFetchFromDB = (eachOrder)=>{
+      let detectComboregex = /,/;
+      let fetchedStockOrCombo;
+
+    if(!detectComboregex.test(eachOrder.name))
+    { return Stock.find({_id: eachOrder.id})
+      .then((result)=>{
+        isStock=true;
+        return result[0]})
+      .catch((err)=>{console.log(error)
+        res.status(502).json("Internal server error")
+      })
+      
+  }
+    else
+    {return Combo.find({_id: eachOrder.id})
+      .then((result)=>{ 
+        isStock= false;
+        return result[0]})
+      .catch((err)=>{console.log(error)
+        res.status(502).json("Internal server error")
+      })
+      
+  }
+
+    }
+
+    orderItems.forEach((eachOrder)=> {
+      
+      determineStockOrComboAndFetchFromDB(eachOrder)
+      .then((fetchedStockOrCombo)=>{
+        if(isStock)
+        fetchedStockOrCombo.produceQuantity = (parseFloat(fetchedStockOrCombo.produceQuantity) - eachOrder.quantity).toString();
+        else 
+        fetchedStockOrCombo.comboQty = (parseFloat(fetchedStockOrCombo.comboQty) - eachOrder.quantity).toString();
+        fetchedStockOrCombo.save()
+        .catch((err)=>{
+          console.log(err);
+          res.status(502).json("Internal server error");
+      })
+      
+      })
+    })
+    
 
         if(token){
     const order = new Order({ buyerContact: buyerContact, orderTotalPrice: orderTotalPrice, orderItems: orderItems });
