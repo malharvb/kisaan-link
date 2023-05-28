@@ -1,7 +1,7 @@
 # kisaan-link
 
-This is an end to end solution for farmers to sell their produce and buyers to buy the same with no
-middlemen in the process. The solution achieves Cost effectiveness and helps to deliver most fresh
+The project is an end to end solution for farmers to sell their produce and buyers to buy the same with no
+middlemen in the process. The solution achieves cost effectiveness and helps to deliver most fresh
 vegetables and fruits to the buyer. There is also the most optimal use of transportation. The
 transportation of the orders to the buyer is based on the concept of truck pooling which involves
 dynamic allotment of produce of farmers to trucks based on existing loads alloted for a truck and the
